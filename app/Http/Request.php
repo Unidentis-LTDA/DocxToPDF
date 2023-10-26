@@ -2,6 +2,8 @@
 
 namespace App\Http;
 
+use App\Utils\File\Upload;
+
 class Request
 {
     private string $httpMethod;
@@ -12,6 +14,7 @@ class Request
 
     private array $headers;
     private Router $router;
+    private Upload|array $file;
 
     public function __construct($router)
     {
@@ -21,6 +24,7 @@ class Request
         $this->postVars = $_POST ?? [];
         $this->headers = getallheaders() ?? [];
         $this->router = $router;
+        $this->setFile();
     }
 
 
@@ -83,19 +87,23 @@ class Request
         $this->headers = $headers;
     }
 
-    /**
-     * @return Router
-     */
     public function getRouter(): Router
     {
         return $this->router;
     }
 
-    /**
-     * @param Router $router
-     */
     public function setRouter(Router $router): void
     {
         $this->router = $router;
+    }
+
+    public function getFile(): Upload|array
+    {
+        return $this->file;
+    }
+
+    public function setFile(?array $file=[]): void
+    {
+        $this->file = new Upload(end($_FILES));
     }
 }
