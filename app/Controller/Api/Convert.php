@@ -16,11 +16,15 @@ class Convert
         'application/vnd.ms-word.document.macroEnabled.12',
         'application/vnd.ms-word.template.macroEnabled.12',
     );
-    public static function onlyDocxTypeFiles(Upload $file)
+    public static function onlyDocxTypeFiles(Upload $file): bool
     {
         return in_array($file->getType(), self::$wordMimeTypes, true);
     }
-
+    public static function lessThanFiveMB(Upload $file): bool
+    {
+        $maxFileSize = 5 * 1024 * 1024; // 5MB in bytes
+        return $maxFileSize > $file->getSize();
+    }
     /**
      * @throws Exception
      */
@@ -31,6 +35,9 @@ class Convert
         $file = $request->getFile();
         if(!self::onlyDocxTypeFiles($file)){
             throw new Exception("Tipo de arquivo não permitido!", 403);
+        }
+        if(!self::lessThanFiveMB($file)){
+            throw new Exception("Tamanho de arquivo não permitido!", 403);
         }
         $file->generateName();
         if (!$file->upload(__ROOT_DIR__ . '/storage/uploads')) {
