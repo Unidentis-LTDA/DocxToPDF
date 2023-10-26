@@ -1,5 +1,4 @@
-<?php
-namespace App\Utils\DocxToPDfService;
+<?php namespace App\Services\DocxToPDfService\Pdf\Contracts;
 ////////////////////////////////////////////////////////////////////////////////
 // __________ __             ________                   __________
 // \______   \  |__ ______  /  _____/  ____ _____ ______\______   \ _______  ___
@@ -12,23 +11,10 @@ namespace App\Utils\DocxToPDfService;
 // -----------------------------------------------------------------------------
 ////////////////////////////////////////////////////////////////////////////////
 
-interface ServiceProviderInterface
+use App\Services\DocxToPDfService\Pdf\TempFile;
+
+interface Backend
 {
-	/**
-	 * Method: register
-	 * =========================================================================
-	 * Registers services on the given container.
-	 *
-	 * *This method should only be used to configure services and parameters.
-	 * It should not get services.*
-	 *
-	 * Parameters:
-	 * -------------------------------------------------------------------------
-	 * - $container: An instance of the ```Gears\Di\Container```.
-	 *
-	 * Returns:
-	 * -------------------------------------------------------------------------
-	 * void
-	 */
-	public function register(Container $container);
+	public function __construct(TempFile $document, $config);
+	public function generate();
 }

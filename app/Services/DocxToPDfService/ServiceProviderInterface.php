@@ -1,4 +1,5 @@
-<?php namespace App\Utils\DocxToPDfService\Pdf\Docx;
+<?php
+namespace App\Services\DocxToPDfService;
 ////////////////////////////////////////////////////////////////////////////////
 // __________ __             ________                   __________
 // \______   \  |__ ______  /  _____/  ____ _____ ______\______   \ _______  ___
@@ -11,57 +12,23 @@
 // -----------------------------------------------------------------------------
 ////////////////////////////////////////////////////////////////////////////////
 
-use SimpleXMLElement as NativeSimpleXMLElement;
-
-class SimpleXMLElement extends NativeSimpleXMLElement
+interface ServiceProviderInterface
 {
 	/**
-	 * Method: fixSplitTags
+	 * Method: register
 	 * =========================================================================
-	 * If part of the tag is formatted differently we won't get a match.
-	 * Best explained with an example:
+	 * Registers services on the given container.
 	 *
-	 * ```xml
-	 * <w:r>
-	 * 	<w:rPr/>
-	 * 	<w:t>Hello ${tag_</w:t>
-	 * </w:r>
-	 * <w:r>
-	 * 	<w:rPr>
-	 * 		<w:b/>
-	 * 		<w:bCs/>
-	 * 	</w:rPr>
-	 * 	<w:t>1}</w:t>
-	 * </w:r>
-	 * ```
+	 * *This method should only be used to configure services and parameters.
+	 * It should not get services.*
 	 *
-	 * The above becomes, after running through this method:
-	 *
-	 * ```xml
-	 * <w:r>
-	 * 	<w:rPr/>
-	 * 	<w:t>Hello ${tag_1}</w:t>
-	 * </w:r>
-	 * ```
 	 * Parameters:
 	 * -------------------------------------------------------------------------
-	 *  - $xml: A well-formed XML string.
+	 * - $container: An instance of the ```Gears\Di\Container```.
 	 *
 	 * Returns:
 	 * -------------------------------------------------------------------------
-	 * string
+	 * void
 	 */
-	public static function fixSplitTags($xml)
-	{
-		preg_match_all('|\$\{([^\}]+)\}|U', $xml, $matches);
-
-		foreach ($matches[0] as $value)
-		{
-			$valueCleaned = preg_replace('/<[^>]+>/', '', $value);
-			$valueCleaned = preg_replace('/<\/[^>]+>/', '', $valueCleaned);
-			$xml = str_replace($value, $valueCleaned, $xml);
-		}
-
-		return new static($xml);
-	}
+	public function register(Container $container);
 }

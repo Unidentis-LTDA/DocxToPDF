@@ -1,4 +1,4 @@
-<?php namespace App\Utils\DocxToPDfService\Pdf\Contracts;
+<?php namespace App\Services\DocxToPDfService\Pdf\Contracts;
 ////////////////////////////////////////////////////////////////////////////////
 // __________ __             ________                   __________
 // \______   \  |__ ______  /  _____/  ____ _____ ______\______   \ _______  ___
@@ -11,10 +11,9 @@
 // -----------------------------------------------------------------------------
 ////////////////////////////////////////////////////////////////////////////////
 
-use App\Utils\DocxToPDfService\Pdf\TempFile;
+use App\Services\DocxToPDfService\Pdf\TempFile;
 
-interface Backend
+interface DocxConverter
 {
-	public function __construct(TempFile $document, $config);
-	public function generate();
+	public function convertDoc(TempFile $docx);
 }

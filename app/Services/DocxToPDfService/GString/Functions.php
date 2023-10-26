@@ -1,5 +1,5 @@
 <?php
-namespace App\Utils\DocxToPDfService\GString;
+namespace App\Services\DocxToPDfService\GString;
 ////////////////////////////////////////////////////////////////////////////////
 // __________ __             ________                   __________
 // \______   \  |__ ______  /  _____/  ____ _____ ______\______   \ _______  ___

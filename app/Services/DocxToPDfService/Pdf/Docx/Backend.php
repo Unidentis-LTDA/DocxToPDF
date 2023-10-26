@@ -1,5 +1,5 @@
 <?php
-namespace App\Utils\DocxToPDfService\Pdf\Docx;
+namespace App\Services\DocxToPDfService\Pdf\Docx;
 ////////////////////////////////////////////////////////////////////////////////
 // __________ __             ________                   __________
 // \______   \  |__ ______  /  _____/  ____ _____ ______\______   \ _______  ___
@@ -14,12 +14,12 @@ namespace App\Utils\DocxToPDfService\Pdf\Docx;
 
 use ZipArchive;
 use RuntimeException;
-use App\Utils\DocxToPDfService\GString as Str;
-use App\Utils\DocxToPDfService\Container;
-use App\Utils\DocxToPDfService\Pdf\TempFile;
-use App\Utils\DocxToPDfService\Pdf\Docx\SimpleXMLElement;
-use App\Utils\DocxToPDfService\Pdf\Docx\Converter\LibreOffice;
-use App\Utils\DocxToPDfService\Pdf\Contracts\Backend as BackendInterface;
+use App\Services\DocxToPDfService\GString as Str;
+use App\Services\DocxToPDfService\Container;
+use App\Services\DocxToPDfService\Pdf\TempFile;
+use App\Services\DocxToPDfService\Pdf\Docx\SimpleXMLElement;
+use App\Services\DocxToPDfService\Pdf\Docx\Converter\LibreOffice;
+use App\Services\DocxToPDfService\Pdf\Contracts\Backend as BackendInterface;
 
 class Backend extends Container implements BackendInterface
 {

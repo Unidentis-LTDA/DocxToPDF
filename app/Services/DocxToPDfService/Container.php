@@ -1,5 +1,5 @@
 <?php
-namespace App\Utils\DocxToPDfService;
+namespace App\Services\DocxToPDfService;
 ////////////////////////////////////////////////////////////////////////////////
 // __________ __             ________                   __________
 // \______   \  |__ ______  /  _____/  ____ _____ ______\______   \ _______  ___
@@ -161,7 +161,7 @@ class Container implements ArrayAccess
 			{
 				// Rebind the closure to the container.
 				// This allows the closure to use the $this var.
-				$bound = Closure::bind($value, $this, 'App\Utils\DocxToPDfService\Container');
+				$bound = Closure::bind($value, $this, 'App\Services\DocxToPDfService\Container');
 
 				// If its not a factory and it's not protected we can resolve it
 				if (!$this->factories->contains($value) && !$this->protected->contains($value))

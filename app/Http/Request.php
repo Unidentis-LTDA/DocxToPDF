@@ -2,7 +2,7 @@
 
 namespace App\Http;
 
-use App\Utils\File\Upload;
+use App\Services\File\Upload;
 
 class Request
 {
@@ -18,10 +18,11 @@ class Request
 
     public function __construct($router)
     {
+        $post = empty($_POST) ? json_decode(file_get_contents('php://input'), true) : $_POST;
         $this->httpMethod = $_SERVER['REQUEST_METHOD'] ?? '';
         $this->uri = $_SERVER['REQUEST_URI'] ?? '';
         $this->queryParams = $_GET ?? [];
-        $this->postVars = $_POST ?? [];
+        $this->postVars = $post ?? [];
         $this->headers = getallheaders() ?? [];
         $this->router = $router;
         $this->setFile();
@@ -104,6 +105,6 @@ class Request
 
     public function setFile(?array $file=[]): void
     {
-        $this->file = new Upload(end($_FILES));
+        $this->file = !empty($_FILES) ? new Upload(end($_FILES)) : [];
     }
 }

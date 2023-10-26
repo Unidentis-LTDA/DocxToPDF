@@ -1,5 +1,5 @@
 <?php
-namespace App\Utils\DocxToPDfService;
+namespace App\Services\DocxToPDfService;
 ////////////////////////////////////////////////////////////////////////////////
 // __________ __             ________                   __________
 // \______   \  |__ ______  /  _____/  ____ _____ ______\______   \ _______  ___
@@ -12,11 +12,11 @@ namespace App\Utils\DocxToPDfService;
 // -----------------------------------------------------------------------------
 ////////////////////////////////////////////////////////////////////////////////
 
-use App\Utils\DocxToPDfService\GString\GString;
+use App\Services\DocxToPDfService\GString\GString;
 use SplFileInfo;
 use RuntimeException;
-use App\Utils\DocxToPDfService\GString as Str;
-use App\Utils\DocxToPDfService\Pdf\TempFile;
+use App\Services\DocxToPDfService\GString as Str;
+use App\Services\DocxToPDfService\Pdf\TempFile;
 
 class Pdf extends Container
 {
@@ -135,7 +135,7 @@ class Pdf extends Container
 		}
 
 		// Now create a new backend
-		$class = '\\App\\Utils\\DocxToPDfService\\Pdf\\'.ucfirst($this->documentType).'\\Backend';
+		$class = '\\App\\Services\\DocxToPDfService\\Pdf\\'.ucfirst($this->documentType).'\\Backend';
 		$this->backend = new $class($this->document, $config);
 	}
 

@@ -1,5 +1,5 @@
 <?php
-namespace App\Utils\DocxToPDfService\GString;
+namespace App\Services\DocxToPDfService\GString;
 ////////////////////////////////////////////////////////////////////////////////
 // __________ __             ________                   __________
 // \______   \  |__ ______  /  _____/  ____ _____ ______\______   \ _______  ___
@@ -258,7 +258,7 @@ class GString implements ArrayAccess
 	 *
 	 * Parameters:
 	 * -------------------------------------------------------------------------
-	 * $name - The name of the \App\Utils\Gears\GString\"FUNCTION" to call.
+	 * $name - The name of the \App\Services\Gears\GString\"FUNCTION" to call.
 	 * $arguments - The arguments to pass to the function.
 	 *
 	 * Returns:
@@ -268,7 +268,7 @@ class GString implements ArrayAccess
 	public function __call($name, $arguments)
 	{
 		// Create the function name
-		$func_name = '\App\Utils\Gears\GString\\'.$name;
+		$func_name = '\App\Services\Gears\GString\\'.$name;
 
 		// Prepend the current string value to the arguments
 		array_unshift($arguments, $this->value);
@@ -301,7 +301,7 @@ class GString implements ArrayAccess
 	 *
 	 * For example compare this:
 	 *
-	 *     \App\Utils\Gears\GString\contains('hello world', 'world');
+	 *     \App\Services\Gears\GString\contains('hello world', 'world');
 	 *
 	 * To this:
 	 *
@@ -313,7 +313,7 @@ class GString implements ArrayAccess
 	 *
 	 * Parameters:
 	 * -------------------------------------------------------------------------
-	 * $name - The name of the \App\Utils\Gears\GString\"FUNCTION" to call.
+	 * $name - The name of the \App\Services\Gears\GString\"FUNCTION" to call.
 	 * $arguments - The arguments to pass to the function.
 	 *
 	 * Returns:
@@ -323,7 +323,7 @@ class GString implements ArrayAccess
 	public static function __callStatic($name, $arguments)
 	{
 		// Create the function name
-		$func_name = '\App\Utils\Gears\GString\\'.$name;
+		$func_name = '\App\Services\Gears\GString\\'.$name;
 
 		// Does the function exist
 		if (!function_exists($func_name))

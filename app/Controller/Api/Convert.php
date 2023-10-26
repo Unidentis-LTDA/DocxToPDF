@@ -3,8 +3,8 @@
 namespace App\Controller\Api;
 
 use App\Http\Request;
-use App\Utils\DocxToPDfService\Pdf;
-use App\Utils\File\Upload;
+use App\Services\DocxToPDfService\Pdf;
+use App\Services\File\Upload;
 use Exception;
 
 class Convert
@@ -37,7 +37,8 @@ class Convert
             throw new Exception("Não foi possível concluir o upload desse arquivo", 500);
         }
         $name = $file->getBasename();
-        Pdf::convert($upDir . '/' . $name, $genDir . '/' . str_replace('.docx', '', $name) . ".pdf");
-        return $name;
+        $pdfName = str_replace('.docx', '', $name) . ".pdf";
+        Pdf::convert($upDir . '/' . $name, $genDir . '/' . $pdfName);
+        return $pdfName;
     }
 }

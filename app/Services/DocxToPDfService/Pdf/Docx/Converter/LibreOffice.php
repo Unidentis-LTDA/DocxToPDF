@@ -1,4 +1,4 @@
-<?php namespace App\Utils\DocxToPDfService\Pdf\Docx\Converter;
+<?php namespace App\Services\DocxToPDfService\Pdf\Docx\Converter;
 ////////////////////////////////////////////////////////////////////////////////
 // __________ __             ________                   __________
 // \______   \  |__ ______  /  _____/  ____ _____ ______\______   \ _______  ___
@@ -12,10 +12,10 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 use RuntimeException;
-use App\Utils\DocxToPDfService\Container;
-use App\Utils\DocxToPDfService\Pdf\TempFile;
+use App\Services\DocxToPDfService\Container;
+use App\Services\DocxToPDfService\Pdf\TempFile;
 use Symfony\Component\Process\Process;
-use App\Utils\DocxToPDfService\Pdf\Contracts\DocxConverter;
+use App\Services\DocxToPDfService\Pdf\Contracts\DocxConverter;
 
 class LibreOffice extends Container implements DocxConverter
 {

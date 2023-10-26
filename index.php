@@ -8,7 +8,7 @@ const URL = 'http://localhost:8333';
 use App\Http\Middleware\Api;
 use App\Http\Middleware\Maintenance;
 use App\Http\Router;
-use App\Utils\View;
+use App\Services\View;
 
 View::init([
     'URL' => URL

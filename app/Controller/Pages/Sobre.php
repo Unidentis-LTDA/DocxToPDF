@@ -2,7 +2,7 @@
 
 namespace App\Controller\Pages;
 use App\Model\Entity\Organization;
-use App\Utils\View;
+use App\Services\View;
 
 class Sobre extends Page
 {
