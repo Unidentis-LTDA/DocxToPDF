@@ -1,0 +1,21 @@
+{
+    "name": "frank/own-framework",
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Bluebom",
+            "email": "franklinhpf@hotmail.com"
+        }
+    ],
+    "require": {
+    },
+    "config": {
+        "allow-plugins": {
+            "kylekatarnls/update-helper": true
+        }
+    }
+}
