@@ -21,13 +21,13 @@ class Router
         $this->setPrefix();
     }
 
-    public function setPrefix()
+    public function setPrefix(): void
     {
-        list('path' => $prefix) = parse_url($this->url);
-        $this->prefix = $prefix ?? '';
+        $path = basename($this->url);
+        $this->prefix = $path ?? '';
     }
 
-    private function addRoute(string $method, string $route, array $params = [])
+    private function addRoute(string $method, string $route, array $params = []): void
     {
         foreach ($params as $key => $value) {
             if ($value instanceof Closure) {
@@ -94,6 +94,7 @@ class Router
     {
         try {
             $route = $this->getRoute();
+
             if (!isset($route['controller'])) {
                 throw new Exception("A URL não pôde ser processada", 500);
             }

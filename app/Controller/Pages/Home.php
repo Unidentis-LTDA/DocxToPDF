@@ -8,11 +8,7 @@ class Home extends Page
 {
     public static function getHome()
     {
-        $org = new Organization();
-        $content = View::render("pages/home", [
-            'name' => $org->name,
-            'description' => $org->description
-        ]);
+        $content = View::render("pages/home");
 
         return parent::getPage('WDVE - Canal - Home', $content);
     }
