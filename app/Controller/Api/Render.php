@@ -14,6 +14,6 @@ class Render
         header("Content-type: application/pdf");
         header("Content-Disposition: inline; filename=filename.pdf");
         @readfile($genDir . '/' . $file);
-        echo "<pre>"; print_r($data); echo "</pre>" . PHP_EOL; exit;
+        die();
     }
 }

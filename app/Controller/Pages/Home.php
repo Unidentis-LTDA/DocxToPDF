@@ -10,6 +10,6 @@ class Home extends Page
     {
         $content = View::render("pages/home");
 
-        return parent::getPage('WDVE - Canal - Home', $content);
+        return parent::getPage('Unidentis - Conversor PDF', $content);
     }
 }
